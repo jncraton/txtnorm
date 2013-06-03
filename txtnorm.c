@@ -5,6 +5,8 @@
 
 #define CR 0x0d
 #define LF 0x0a
+#define SPACE 0x20
+#define TAB 0x09
 
 unsigned char getNextByte() {
     unsigned char byte[2];
@@ -49,7 +51,9 @@ int printReplacement(unsigned char* uChar) {
 }
 
 int main (int argc, char **argv) {
+    int linePos = 0;
     unsigned char uChar[4];
+    
     uChar[0] = getNextByte();
     
     #ifdef _WIN32
@@ -75,9 +79,26 @@ int main (int argc, char **argv) {
             if (uChar[1] == LF) {
                 fwrite(&uChar[1], 1, 1, stdout);
             }
+            
+            linePos = 0;
+        } else if (uChar[0] == LF) {
+            
+            uChar[0] = getNextByte();
+            
+            if (linePos > 60 && uChar[0] != SPACE && uChar[0] != TAB && uChar[0] != LF) {
+                fwrite(" ", 1, 1, stdout);
+                fwrite(uChar, 1, 1, stdout);
+            } else {
+                fwrite("\n", 1, 1, stdout);
+                fwrite(uChar, 1, 1, stdout);
+            }
+                
+            linePos = 0;
         } else {
             fwrite(uChar, 1, 1, stdout);
         }
+        
+        linePos +=1;
         
         uChar[0] = getNextByte();
     }

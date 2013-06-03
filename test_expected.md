@@ -1,7 +1,9 @@
 txtnorm
 =======
 
-Small program to normalize formatting accross text files.
+Small program to normalize formatting accross text files. This program is written in C and produces a small single executable file which performs some basic manipulation on stdin and streams the new text to standard out.
+
+Usage: txtnorm < infile > outfile
 
 * Converts line endings to LF
 * Single quotes ('') become '
@@ -10,3 +12,4 @@ Small program to normalize formatting accross text files.
 * em dash (-) becomes -
 * hyphen (-) becomes -
 * minus sign (-) becomes -
+* Converts hard wrapped paragraphs to long lines
