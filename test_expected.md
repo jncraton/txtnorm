@@ -1,7 +1,7 @@
 txtnorm
 =======
 
-Small program to normalize formatting accross text files. This program is written in C and produces a small single executable file which performs some basic manipulation on stdin and streams the new text to standard out.
+Small program to normalize formatting of a text file. This program is written in C and produces a small single executable file which performs some basic manipulation on stdin and streams the new text to standard out.
 
 Usage: txtnorm < infile > outfile
 
