@@ -4,9 +4,9 @@ txtnorm
 Small program to normalize formatting accross text files.
 
 * Converts line endings to LF
-* Single quotes (‘’) become '
-* Double quotes (“”) become "
-* en dash (–) becomes -
-* em dash (—) becomes -
-* hyphen (-) becomes -
-* minus sign (-) becomes -
+* Single quotes (â€˜â€™) become '
+* Double quotes (â€œâ€) become "
+* en dash (â€“) becomes -
+* em dash (â€”) becomes -
+* hyphen (â€) becomes -
+* minus sign (âˆ’) becomes -
