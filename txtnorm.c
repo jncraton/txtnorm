@@ -10,7 +10,7 @@ unsigned char getNextByte() {
     unsigned char byte[2];
     
     if (!fread(byte, 1, 1, stdin)) {
-        // This could real error checking
+        // This could use real error checking
         // It's probably end of input
         exit(0);
     }
