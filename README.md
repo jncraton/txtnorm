@@ -1,4 +1,4 @@
-txtNorm
+txtnorm
 =======
 
 Small program to normalize formatting accross text files.
