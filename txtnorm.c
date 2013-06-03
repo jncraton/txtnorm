@@ -54,6 +54,7 @@ int main (int argc, char **argv) {
     
     #ifdef _WIN32
     // Work around newline replacement on Windows
+    extern int fileno(FILE*);
     setmode(fileno(stdout), O_BINARY);
     #endif
     
