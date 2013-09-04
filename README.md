@@ -8,8 +8,8 @@ some basic manipulation on stdin and streams the new text to standard out.
 Usage: txtnorm < infile > outfile
 
 * Converts line endings to LF
-* Single quotes (‘’) become '
-* Double quotes (“”) become "
+* Single quotes (‘’��) become '
+* Double quotes (“”��) become "
 * en dash (–) becomes -
 * em dash (—) becomes -
 * hyphen (‐) becomes -

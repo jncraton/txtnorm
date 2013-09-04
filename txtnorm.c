@@ -89,6 +89,10 @@ int main (int argc, char **argv) {
             }
                 
             linePos = 0;
+        } else if (uChar[0] == 0x91 || uChar[0] == 0x92) {
+            fwrite("'", 1, 1, stdout);
+        } else if (uChar[0] == 0x93 || uChar[0] == 0x94) {
+            fwrite("\"", 1, 1, stdout);
         } else {
             fwrite(uChar, 1, 1, stdout);
         }

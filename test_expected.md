@@ -6,8 +6,8 @@ Small program to normalize formatting of a text file. This program is written in
 Usage: txtnorm < infile > outfile
 
 * Converts line endings to LF
-* Single quotes ('') become '
-* Double quotes ("") become "
+* Single quotes ('''') become '
+* Double quotes ("""") become "
 * en dash (-) becomes -
 * em dash (-) becomes -
 * hyphen (-) becomes -
