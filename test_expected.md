@@ -13,3 +13,8 @@ Usage: txtnorm < infile > outfile
 * hyphen (-) becomes -
 * minus sign (-) becomes -
 * Converts hard wrapped paragraphs to long lines
+
+This programs will also remove paragraph indentation. If a line is preceded by double newlines, then leading spaces will be removed. This  will not imact indentation of lines separated by a single newline. For example, the following should remain untouched:
+
+* List Item
+    * Indented list item

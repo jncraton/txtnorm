@@ -47,6 +47,7 @@ int printReplacement(unsigned char* uChar) {
 
 int main (int argc, char **argv) {
     int linePos = 0;
+    int precedingNewlines = 0;
     unsigned char uChar[4];
     
     uChar[0] = getNextByte();
@@ -68,6 +69,7 @@ int main (int argc, char **argv) {
             if (printReplacement(uChar)) {
                 fwrite(uChar, 3, 1, stdout);
             }
+            precedingNewlines = 0;
         } else if (uChar[0] == '\r') {
             uChar[1] = getNextByte();
             
@@ -75,9 +77,11 @@ int main (int argc, char **argv) {
                 fwrite(&uChar[1], 1, 1, stdout);
             }
             
+            precedingNewlines++;
             linePos = 0;
         } else {
             if (uChar[0] == '\n') {
+                precedingNewlines++;
                 /* Handle text wrapping */
                 uChar[0] = getNextByte();
                 
@@ -92,10 +96,18 @@ int main (int argc, char **argv) {
             
             if (uChar[0] == 0x91 || uChar[0] == 0x92) {
                 fwrite("'", 1, 1, stdout);
+                precedingNewlines = 0;
             } else if (uChar[0] == 0x93 || uChar[0] == 0x94) {
                 fwrite("\"", 1, 1, stdout);
-            } else {
+                precedingNewlines = 0;
+            } else if ( (uChar[0] != ' ' && uChar[0] != '\t') || precedingNewlines < 2 ) {
                 fwrite(uChar, 1, 1, stdout);
+                
+                if (uChar[0] != '\n') {
+                    precedingNewlines = 0;
+                } else {
+                    precedingNewlines++;
+                }
             }
         }
         
