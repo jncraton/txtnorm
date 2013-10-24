@@ -78,7 +78,7 @@ int main (int argc, char **argv) {
             linePos = 0;
         } else {
             if (uChar[0] == '\n') {
-                
+                /* Handle text wrapping */
                 uChar[0] = getNextByte();
                 
                 if (linePos > 60 && uChar[0] != ' ' && uChar[0] != '\t' && uChar[0] != '\n') {
