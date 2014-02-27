@@ -116,6 +116,5 @@ int main (int argc, char **argv) {
         uChar[0] = getNextByte();
     }
     
-    
     return 0;
 }
