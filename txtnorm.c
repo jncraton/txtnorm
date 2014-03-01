@@ -3,16 +3,32 @@
 #include <fcntl.h>
 #include <io.h>
 
+unsigned char buf[256];
+unsigned char buf_start = 0;
+
+void fillBuf() {
+    fread(buf, 1, 256, stdin);
+}
+
 unsigned char getNextByte() {
     unsigned char byte[2];
     
+    unsigned char ret = buf[buf_start];
+    
+    if (!ret) {
+        exit(0);
+    }
+
     if (!fread(byte, 1, 1, stdin)) {
         // This could use real error checking
         // It's probably end of input
-        exit(0);
+        buf[buf_start] = 0x00;
+    } else {
+        buf[buf_start] = byte[0];
     }
     
-    return byte[0];
+    buf_start++;
+    return ret;
 }
 
 int printReplacement(unsigned char* uChar) {
@@ -49,6 +65,8 @@ int main (int argc, char **argv) {
     int linePos = 0;
     int precedingNewlines = 0;
     unsigned char uChar[4];
+    
+    fillBuf();
     
     uChar[0] = getNextByte();
     
