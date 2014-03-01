@@ -31,23 +31,18 @@ unsigned char getNextByte() {
     return ret;
 }
 
-unsigned char bufferContainsPair(unsigned char a, unsigned char b) {
+unsigned char nextLineIndented() {
     for (unsigned char i = buf_start; i != buf_start - 1; i++) {
-        if (buf[i] == a && buf[i+1] == b) {
-            return 1;
+        if (buf[i] == '\n') {
+            if (buf[i + 1] == '\t' || buf[i + 1] == ' ') {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
     
     return 0;
-}
-
-unsigned char nextLineIndented() {
-    if (bufferContainsPair('\n', ' ') || 
-         bufferContainsPair('\n', '\t')) {
-         return 1;
-     }
-     
-     return 0;
 }
 
 int printReplacement(unsigned char* uChar) {
