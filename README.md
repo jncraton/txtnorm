@@ -24,3 +24,8 @@ example, the following should remain untouched:
 
 * List Item
     * Indented list item
+
+    This program
+    Should leave
+    Indented blocks
+    Alone

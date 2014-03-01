@@ -18,3 +18,8 @@ This programs will also remove paragraph indentation. If a line is preceded by d
 
 * List Item
     * Indented list item
+
+    This program
+    Should leave
+    Indented blocks
+    Alone
